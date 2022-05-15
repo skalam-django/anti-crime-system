@@ -12,6 +12,7 @@ Sk Khurshid Alam
 * [**Celery**](https://docs.celeryq.dev/en/stable/getting-started/introduction.html)
 * [**PostgreSQL**](https://www.postgresql.org/download/)
 * [**Redis**](https://redis.io/download/)
+* [**NodeMCU**](https://nodemcu.readthedocs.io/en/release/)
 * [**Ai Thinker LoRa-Ra-01 RF Transceiver Module**](https://www.electronicscomp.com/ai-thinker-lora-ra-01-rf-transceiver-module?gclid=Cj0KCQjwyYKUBhDJARIsAMj9lkEhZzkRhc4-aCUOrKSqQhR5kje3HHtiygVeeFFmT7vdPbt7e18upfoaAnbVEALw_wcB)
 * [**GPS Module**](https://www.electronicwings.com/sensors-modules/gps-receiver-module)
 * [**SIM800L**](https://lastminuteengineers.com/sim800l-gsm-module-arduino-tutorial/)
