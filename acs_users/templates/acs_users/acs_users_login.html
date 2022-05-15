@@ -1,0 +1,244 @@
+{% extends "acs_users/login_base.html" %}
+{% block css %}
+<script src="https://cdn.jsdelivr.net/npm/easytimer@1.1.1/src/easytimer.min.js"></script>
+<style type="text/css">
+
+ul.messagelist {
+    padding: 0;
+    margin: 0;
+}
+
+ul.messagelist li {
+    display: block;
+    font-weight: 400;
+    font-size: 13px;
+    padding: 10px 10px 10px 65px;
+    margin: 0 0 10px 0;
+    background: #dfd url(../img/icon-yes.svg) 40px 12px no-repeat;
+    background-size: 16px auto;
+    color: #333;
+}
+
+ul.messagelist li.warning {
+    background: #ffc url(../img/icon-alert.svg) 40px 14px no-repeat;
+    background-size: 14px auto;
+}
+
+ul.messagelist li.error {
+    background: #ffefef url(../img/icon-no.svg) 40px 12px no-repeat;
+    background-size: 16px auto;
+}
+
+.errornote {
+    font-size: 14px;
+    font-weight: 700;
+    display: block;
+    padding: 10px 12px;
+    margin: 0 0 10px 0;
+    color: #ba2121;
+    border: 1px solid #ba2121;
+    border-radius: 4px;
+    background-color: #fff;
+    background-position: 5px 12px;
+}
+
+ul.errorlist {
+    margin: 0 0 4px;
+    padding: 0;
+    color: #ba2121;
+    background: #fff;
+}
+
+ul.errorlist li {
+    font-size: 13px;
+    display: block;
+    margin-bottom: 4px;
+}
+
+ul.errorlist li:first-child {
+    margin-top: 0;
+}
+
+ul.errorlist li a {
+    color: inherit;
+    text-decoration: underline;
+}
+
+td ul.errorlist {
+    margin: 0;
+    padding: 0;
+}
+
+td ul.errorlist li {
+    margin: 0;
+}
+
+.form-row.errors {
+    margin: 0;
+    border: none;
+    border-bottom: 1px solid #eee;
+    background: none;
+}
+
+.form-row.errors ul.errorlist li {
+    padding-left: 0;
+}
+
+.errors input, .errors select, .errors textarea {
+    border: 1px solid #ba2121;
+}
+
+div.system-message {
+    background: #ffc;
+    margin: 10px;
+    padding: 6px 8px;
+    font-size: .8em;
+}
+
+div.system-message p.system-message-title {
+    padding: 4px 5px 4px 25px;
+    margin: 0;
+    color: #c11;
+    background: #ffefef url(../img/icon-no.svg) 5px 5px no-repeat;
+}
+
+.description {
+    font-size: 12px;
+    padding: 5px 0 0 12px;
+}
+
+/* ENDS HERE */
+
+
+.error{
+    max-width: 340px;
+    position: fixed;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    width: -webkit-fill-available;   
+    z-index: 1000;  
+    text-align: center;
+}
+
+  #content-main {
+    min-height: 239px;
+    max-width: 340px;
+    position: fixed;
+    padding-top: 25px;
+    margin-top: 12px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    width: -webkit-fill-available;   
+    border:1px solid #ccc;
+    z-index: 1000;
+  }
+
+
+/* BREADCRUMBS #79aec8;*/
+    
+  div.breadcrumbs {
+    background: #f54242;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px 40px;
+    text-align: center;
+    margin:-25px -15px 20px -15px;
+  }
+ 
+
+.resend_otp{
+    max-width: 340px;
+    position: fixed;
+    padding-top: 2px;
+    margin-top: 10px;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    width: -webkit-fill-available;   
+    z-index: 1000;
+}
+.counter{
+    max-width: 340px;
+    position: fixed;
+    padding-top: 2px;
+    margin-top: 10px;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: -webkit-fill-available;
+    z-index: 1000;
+}
+
+.jumbotron{
+  background-color: transparent;
+}
+.otps {
+    display: block;
+    border: 0px none;
+    margin-bottom:20px;
+    text-align: center;
+}
+.otps input{
+  width:30px;
+  text-align: center;
+  border:0px none;
+  box-shadow: none;
+  border-bottom:1px solid black;
+  font-weight: bold;
+}
+.otps input + input {
+  margin-left:10px;
+}
+
+.iti-mobile .intl-tel-input.iti-container {
+  max-width: 200px;
+  font-size: 10px;
+}
+.form-row {
+  margin-bottom: 15px;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+  <div class="container text-center jumbotron" id="content-main">
+   <div class="breadcrumbs">{% if site_header %}{{ site_header }}{% endif %}</div>
+    <form action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
+      <div class="form-row phone_no-div">
+        {{ form.username.label_tag }} 
+        {{ form.username.errors }}
+        {{ form.username }}
+      </div>
+      <div class="form-row otp-div">
+        {{ form.password.label_tag }} 
+        {{ form.password.errors }}
+        {{ form.password }}
+        <input type="hidden" name="next" value="{{ next }}">
+      </div>
+      <div class="submit-row" style="margin-top: 10px;">
+        <label>&nbsp;</label><button id="submit" type="submit" value="{{ login_btn }}" class="btn btn-primary">{{ login_btn }}</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="error">
+  {% if login_attempt_error %}
+    {% if login_attempts %}
+     <div class="form-row">
+      <p class="errornote" id="login_attempts">You have exceeded the maximum limit of login, please try some time later.</p>
+     </div>
+    {% else %}
+      <script type="text/javascript">$('#login_attempts').empty();</script>
+    {% endif %}
+  {% endif %}  
+
+  </div>
+  
+{% endblock %}  
+{% block js %}
+<script type="text/javascript">
+
+</script>
+{% endblock %}

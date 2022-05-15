@@ -1,0 +1,151 @@
+#myContainer {
+  width: 100%;
+  height: 400px;
+  position: relative;
+}
+#myContainer2 {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform linear 1s;
+  top: -375px;
+}
+#myAnimation {
+  width: 100%;
+  height: 200px;
+  position: relative;
+
+}
+.top_div{
+  position: absolute;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  top: 65%;
+  left: 40%;
+  z-index: 1000;
+}
+.top_div_logo{
+  position: absolute;
+  text-align: center;
+  top: 3%;
+  left: 26%;
+  z-index: 1000;
+}
+.top_div_title{
+  position: absolute;
+  text-align: center;
+  top: 10%;
+  left: 15%;
+  z-index: 1000;
+  color : white;
+  font-size: 3vh;
+  font-weight: bold;
+
+}
+.top_div_sub_title{
+  position: absolute;
+  text-align: center;
+  top: 20%;
+  left: 25%;
+  z-index: 1000;
+  color : white;
+  font-size: 2.7em;
+  font-weight: bold;
+
+}
+
+.top_div_select{
+  position: absolute;
+  text-align: center;
+  top: 25%;
+  left: 25%;
+  z-index: 1000;
+  color : white;
+  font-size: 2.7em;
+  font-weight: bold;
+
+}
+.div_bottom_text{
+  position: absolute;
+  top: 75%;
+  left: 5%;
+  z-index: 1000;
+  color : white;
+  font-size: 2.5em;
+  font-weight: bold;
+  padding:30px 15px 0px 15px;
+
+}
+.container_2 .btn_scan {
+  position: absolute;
+  top: 70%;
+  left: 35%;
+  background-color: #58b89c;
+  color: white;
+  font-weight:bold;
+  font-size: 50px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+}
+.slideUp
+{
+  transform: translate(0,60%);
+}
+.cursive{
+    font-family:cursive !important;
+}
+html, body {margin: 0; height: 100%; overflow: hidden}
+.container_2{
+width: 100%;
+z-index: 100;
+position: absolute;
+}
+.container_1{
+height: 100%;
+width: 100%;
+top: 10%;
+z-index: 1;
+position: absolute;
+}
+.button_scan_here{
+    position: absolute;
+    top: 65%;
+    left: 50%;
+}
+@media(min-width:600px){
+  div.select{
+  left:calc(50% - 460px);
+  }
+  #result_strip{
+  left:calc(50% - 250px);
+}
+}
+div.select{
+  top: 25%;
+  font-weight: bold;
+  display:flex;
+  color:#ec0000;
+  text-align:center;
+  position:absolute;
+  z-index:10000;
+}
+.select > #videoSource{
+height: fit-content;
+  display:block;
+  width:fit-content;
+  font-size:30px;
+  border:0px;
+   background: transparent;
+
+}
+
+#loader{
+width: 20%;
+z-index: 1;
+position: absolute;
+top: 50%;
+left: 40%;
+display : none;
+}

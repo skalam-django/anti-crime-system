@@ -1,0 +1,82 @@
+{% extends 'main_user/base.html' %}
+{% load static %}
+{% block content %}
+	<form action="{% url 'main_user:register' %}" method="POST">
+	    {% csrf_token %}
+	    <table>
+			{{ mu_form.as_table }}
+			{{ user_form.as_table }}
+			{{ gsm_form.as_table }}
+	     </table>
+
+	    <div>
+	    	<input type="checkbox" id="acs_module" name="" value="">
+	    	<label for="acs_module">Have ACS Module?</label>		
+	    	<div class="scan" id="" style="display: none;">
+	    		<p id="description">Scan the QR code to attach ACS Module:</p>
+				<div class="container_1">
+				    <div class="video-field">
+<!-- 				        <div id="result_strip">
+				            <ul class="thumbnails"></ul>
+				        </div> -->
+				        <video id="video" autoplay loop muted width="500" height="500" position="relative" style="transform: scaleX(1) !important;"></video>
+				    </div>
+				    <ul id="decoded"></ul>
+				    <canvas id="canvas" class="drawingBuffer" style="display:none"></canvas><br clear="all">
+				</div>
+
+
+			      <div id="loader" style="display: none;">
+			        <svg width="50px"  height="50px"  viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-double-ring" style="background: none;"><circle cx="50" cy="50" ng-attr-r="{{config.radius}}" ng-attr-stroke-width="{{config.width}}" ng-attr-stroke="{{config.c1}}" ng-attr-stroke-dasharray="{{config.dasharray}}" fill="none" stroke-linecap="round" r="40" stroke-width="4" stroke="#030303" stroke-dasharray="62.83185307179586 62.83185307179586" transform="rotate(237.079 50 50)"><animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform></circle><circle cx="50" cy="50" ng-attr-r="{{config.radius2}}" ng-attr-stroke-width="{{config.width}}" ng-attr-stroke="{{config.c2}}" ng-attr-stroke-dasharray="{{config.dasharray2}}" ng-attr-stroke-dashoffset="{{config.dashoffset2}}" fill="none" stroke-linecap="round" r="35" stroke-width="4" stroke="#b4b9b2" stroke-dasharray="54.97787143782138 54.97787143782138" stroke-dashoffset="54.97787143782138" transform="rotate(-237.079 50 50)"><animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;-360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform></circle></svg>
+			      </div>
+
+
+				<div class="container_2" >
+				        <div class="select div_select_options" style="display:none">
+				            <label for="videoSource"></label><select onChange="getStream(this);" id="videoSource"></select>
+				        </div>
+
+				    <div id ="myContainer" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+
+				    </div>
+
+				    <div id ="myContainer2"  class="col-lg-12 col-md-12 col-sm-12 col-xs-12 "  style="padding-bottom: 10px;">
+				        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 " >
+				        <button id="scanbutton" onclick="start_scanning()" class="btn_scan">SCAN QR Code</button>
+				        </div>
+				    </div>
+				</div>
+	    	</div>
+	    </div>
+	     
+	    <input type="submit" value="Register">
+	</form>
+{% endblock %}	
+{% block js %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="{% static 'main_user/js/qrcode.js' %}"></script>
+<script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js" ></script>
+<script src="{% static 'main_user/js/qr_code.js' %}"></script>
+<script type="text/javascript">
+    $('#description').text('Scan the QR code to attach ACS Module:');
+    $('#description').css('color','black');
+	$('#loader').css('display','none');
+	$('#acs_module').on('change',function(){
+		var acs = $(this).is(":checked")
+		if (acs!=undefined && acs==true){
+			$('#loader').css('display','none');
+			$('#video').css('display','none');
+			$('#video').css('transform','scaleX(1)');
+			$('.scan').show();
+		}
+		else{
+			$('.scan').hide();
+		}
+	})
+</script>	
+{% endblock %}
+
+
+
+
+

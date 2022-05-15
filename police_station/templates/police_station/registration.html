@@ -1,0 +1,32 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  	<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+ 	 <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> -->
+  	<script src="{% static 'generalize/js/generalize.js' %}?v={{request.META.static_version}}"></script>
+
+</head>
+<body>
+	<form action="{% url 'police_station:register' %}" method="POST">
+	    {% csrf_token %}
+	    {{ ps_form.as_p }}
+	    {{ user_form.as_p }}
+	    {{ pc_form.as_p }}
+	    <input type="submit" value="Register">
+	</form>
+<script type="text/javascript">
+	GetUserLatLng(function(lat_lng){
+		console.log('lat_lng: ',lat_lng);
+		var lat = lat_lng['lat'];
+		var lng = lat_lng['lng'];
+		$('#id_ps-lat').val(lat);
+		$('#id_ps-lng').val(lng);
+	});
+</script>	
+</body>
+</html>
+

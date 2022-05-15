@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{% static 'mall/css/login.css' %}?v={{request.META.static_version}}" />
+    <script type="text/javascript" src="{% static 'generalize/js/generalize.js' %}?v={{request.META.static_version}}"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+
+    <title>{{title|default:"Social Auth"}}</title>
+    {% block css %}
+    {% endblock %}    
+</head>
+<body>
+    <div class="container" style="height:fit-content;">
+       <div class="row">
+            <div class="col-xs-12 col-sm-1 col-lg-2 col-md-2 nopadding"></div>
+            <div class="col-xs-12 nopadding" >
+                <h1 class="">{{SITE_HEADER|default:""}}</h1>
+                <div class="ACS_logo">
+<!--                     <img style=" padding:0px; height: 50px;" src='{% static "mall/images/simply_order_logo.png" %}' alt="ACS"> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    {% block content %}
+    {% endblock %}
+    {% block js %}
+    {% endblock %}
+</body>
+</html>

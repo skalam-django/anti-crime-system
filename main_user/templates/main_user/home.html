@@ -1,0 +1,13 @@
+{% extends 'main_user/base.html' %}
+{% load static %}
+{% load notipush_notifications %}
+{% block css %}
+{% notipush_header %}
+{% endblock %}
+{% block content %}
+{% csrf_token %}
+{% notipush_button %}
+{% endblock %}
+{% block js %}
+<!-- <script type="text/javascript" src="{% static 'notipush/audio_play.js' %}"></script> -->
+{% endblock %}

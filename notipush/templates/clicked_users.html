@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  	<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+ 	 <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> -->
+  	<script src="{% static 'generalize/js/generalize.js' %}?v={{request.META.static_version}}"></script>
+	<script id="clicked_users-js" type="text/javascript" src="{% static 'notipush/clicked_users.js' %}?v={{request.META.static_version}}"></script>
+	<title>Loading...</title>
+</head>
+<body>
+	<h3> Please Wait....</h3>
+</body>
+</html>
